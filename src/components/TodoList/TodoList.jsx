@@ -26,6 +26,17 @@ function TodoList() {
     setTasks([...tasks, newTaskObject]);
   };
 
+  const handleToggleComplete = (taskId) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === taskId) {
+          return { ...task, isCompleted: true };
+        }
+        return task;
+      })
+    );
+  };
+
   return (
     <div className="todo-container">
       <h2>רשימת משימות</h2>
@@ -34,7 +45,7 @@ function TodoList() {
       
       <ul className="todo-list">
         {tasks.map((task) => (
-          <TodoItem key={task.id} task={task} />
+          <TodoItem key={task.id} task={task} onToggleComplete={handleToggleComplete}/>
         ))}
       </ul>
     </div>

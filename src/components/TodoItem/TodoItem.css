@@ -20,3 +20,22 @@
   background: #ffffff;
   border-right-color: #6d28d9;
 }
+
+.complete-button {
+  background: linear-gradient(135deg, #68ea6c 0%, #25b22c 100%);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+  margin-right: auto; /* טריק שדוחף את הכפתור הכי שמאלה שאפשר בתוך פריסת RTL */
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.complete-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+}
