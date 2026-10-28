@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoItem from '../TodoItem/TodoItem.jsx';
+import TodoForm from '../TodoForm/TodoForm.jsx';
 import './TodoList.css';
 
 function TodoList() {
@@ -9,11 +10,8 @@ function TodoList() {
     { id: 3, title: 'Fill exercise in science', isCompleted: false },
   ]);
 
-  const [newTask, setNewTask] = useState('');
-
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    const trimmedTitle = newTask.trim();
+  const handleAddNewTask = (taskTitle) => {
+    const trimmedTitle = taskTitle.trim();
 
     if (trimmedTitle === '' || tasks.some(task => task.title === trimmedTitle)) {
       return;
@@ -26,23 +24,13 @@ function TodoList() {
     };
 
     setTasks([...tasks, newTaskObject]);
-    setNewTask('');
   };
 
   return (
     <div className="todo-container">
       <h2>רשימת משימות</h2>
 
-      <form onSubmit={handleAddTask} className="todo-form">
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="הוסיפי משימה חדשה..."
-          className="todo-input"
-        />
-        <button type="submit" className="todo-button">אישור</button>
-      </form>
+      <TodoForm onAddTask={handleAddNewTask} />
       
       <ul className="todo-list">
         {tasks.map((task) => (
